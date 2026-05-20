@@ -20,5 +20,4 @@ Acknowledge: The data preprocessing pipeline and dataset split in this project a
 ```
 # Train the model
 Run bash run_mimic_cxr.sh to train a model on the MIMIC-CXR data.
-
 bash run_mimic_cxr.sh
