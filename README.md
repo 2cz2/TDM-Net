@@ -21,10 +21,10 @@ The MIMIC-CXR-JPG dataset is available at PhysioNet. Please organize your datase
 Plaintext
 data/
 └── mimic-cxr/
-    ├── images/           # Raw DICOM or JPEG images
-    ├── reports/          # Original radiology report text files
-    └── annotation.json   # Metadata containing temporal splits and labels
-💡 Acknowledge: The data preprocessing and dataset split are based on the implementation from CelestialShine/Longitudinal-Chest-X-Ray.
+    ├── images/           
+    ├── reports/          
+    └── annotation.json   
+💡 Acknowledge: The data preprocessing pipeline and dataset split in this project are based on the implementation from the baseline repository: https://github.com/CelestialShine/Longitudinal-Chest-X-Ray. We sincerely thank the authors for their open-source contribution.
 
 🚀 Train the Model
 Run the following command to train the model on the MIMIC-CXR data:
