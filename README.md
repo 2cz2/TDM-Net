@@ -30,5 +30,6 @@ data/
 ## 🚀 Train the Model
 Run the following command to train the model on the MIMIC-CXR data:
 
-Bash
+```bash
 bash run_mimic_cxr.sh
+```
