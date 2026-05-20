@@ -15,6 +15,7 @@ TDM-Net is a temporal-aware and diagnosis-guided multi-modal network designed fo
 git clone [https://github.com/2cz2/TDM-Net.git](https://github.com/2cz2/TDM-Net.git)
 cd TDM-Net
 pip install -r requirements.txt
+```
 📊 Data Preparation
 The MIMIC-CXR-JPG dataset is available at PhysioNet. Please organize your dataset directory as follows:
 
@@ -25,7 +26,7 @@ data/
     ├── reports/          
     └── annotation.json   
 💡 Acknowledge: The data preprocessing pipeline and dataset split in this project are based on the implementation from the baseline repository: https://github.com/CelestialShine/Longitudinal-Chest-X-Ray. We sincerely thank the authors for their open-source contribution.
-
+```
 🚀 Train the Model
 Run the following command to train the model on the MIMIC-CXR data:
 
