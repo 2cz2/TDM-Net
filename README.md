@@ -1,4 +1,3 @@
-Markdown
 # TDM-Net
 
 This repository is the official PyTorch implementation of the paper:  
