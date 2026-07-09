@@ -1,7 +1,8 @@
 # TDM-Net
 
 This repository is the official PyTorch implementation of the paper:  
-**"Research on Temporal Multi-modal Joint Modeling of Chest X-rays and Reports"**
+**"TDM-Net: A Temporal-aware and Diagnosis-guided Multi-modal Network for Longitudinal
+Radiology Report Generation"**
 
 ---
 
