@@ -3,9 +3,14 @@ torchvision==0.13.1+cu113
 torchaudio==0.12.1+cu113
 transformers==4.36.2
 tokenizers==0.15.2
+huggingface-hub==0.36.2
+safetensors==0.7.0
 numpy==1.26.4
-pandas==2.1.4
+pandas==2.3.3
+Pillow==11.3.0
+pycocoevalcap==1.2
+pycocotools==2.0.11
 scikit-learn==1.6.1
 scipy==1.13.1
-tqdm==4.67.3
+tqdm==4.70.1
 matplotlib==3.9.4
