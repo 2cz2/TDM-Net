@@ -1,5 +1,5 @@
 #!/bin/bash
-python -u main.py \
+python main.py \
 --mode train \
 --experiment full \
 --image_dir ./data/mimic-cxr/images/ \
