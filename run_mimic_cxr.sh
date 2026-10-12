@@ -1,14 +1,30 @@
 #!/bin/bash
-python main.py \
---image_dir ./data/mimic_cxr/images/ \
---ann_path ./data/mimic_cxr/annotation.json \
+python -u main.py \
+--mode train \
+--experiment full \
+--image_dir ./data/mimic-cxr/images/ \
+--ann_path ./data/mimic-cxr/annotation_with_labels.json \
+--metadata_path ./mimic-cxr-2.0.0-metadata.csv \
 --dataset_name mimic_cxr \
 --max_seq_length 100 \
 --threshold 10 \
 --batch_size 20 \
---epochs 45 \
---save_dir results/mimic_cxr \
---step_size 1 \
---gamma 0.8 \
+--num_workers 4 \
+--max_history 3 \
+--epochs 35 \
+--early_stop 10 \
+--lr_ve 5e-5 \
+--lr_ed 1e-4 \
+--weight_decay 5e-5 \
+--cls_lambda 0.5 \
+--cls_pos_weight 2.5 \
+--history_dropout 0.15 \
+--max_gen_length 100 \
+--beam_size 3 \
+--length_alpha 1.3 \
+--repetition_penalty 1.05 \
+--no_repeat_ngram_size 3 \
 --seed 456789 \
+--device cuda \
+--save_dir ./results/full/seed_456789 \
 #--resume results/mimic_cxr/current_checkpoint.pth
