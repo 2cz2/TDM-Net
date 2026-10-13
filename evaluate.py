@@ -30,7 +30,6 @@ if __name__ == '__main__':
     if a.counterfactual:
         other = read(a.counterfactual); aligned(rows,other,counterfactual=True)
         cf = np.asarray([other[k]['prediction_classes'] for k in keys])
-    # History-removal CF-HI and fixed-mechanism contrasts are separate estimands.
     mechanism = cf is not None and other[keys[0]]['intervention']['mechanism'] != 'none'
     history_cf = None if mechanism else cf
     result = {'ce': ce_metrics(gt,pr), 'ce_uncertain_positive': ce_metrics(gt,pr,True),
