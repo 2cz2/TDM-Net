@@ -1,4 +1,3 @@
-"""Dataset checks that run without torch. Never infer study_id from a DICOM ID."""
 import csv
 import hashlib
 import json
@@ -115,7 +114,6 @@ def audit_annotation(ann):
             'overlaps': overlaps}
 
 def metadata_conflict(path, study, current, current_line, reason):
-    """Rescan only on failure, avoiding a second copy of the full metadata in RAM."""
     fields = ('subject_id', 'study_id', 'dicom_id', 'StudyDate', 'StudyTime')
     first = None
     with open(path, newline='', encoding='utf-8-sig') as f:
@@ -284,7 +282,6 @@ def run_audit(ann_path, metadata_path, output_dir, max_history=3, image_dir=None
                  max_history=max_history, images_checked=image_dir is not None)
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
-    # JSON roundtrip normalizes integer histogram keys for subsequent verification.
     subjects = audit.pop('subject_ids')
     audit = json.loads(json.dumps(audit))
     immutable_json(output / 'split_subject_ids.json', subjects)
