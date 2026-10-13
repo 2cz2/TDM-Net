@@ -7,7 +7,6 @@ from pathlib import Path
 from modules.contract import atomic_json
 from collections import defaultdict
 
-# ========== 配置（按需修改） ==========
 IMAGE_ROOT = 'data/mimic-cxr/images'
 REPORT_ROOT = 'data/mimic-cxr/mimic-cxr-reports'
 METADATA_CSV = 'mimic-cxr-2.0.0-metadata.csv'
@@ -20,7 +19,7 @@ DUPLICATE_SINGLE_VIEW = True
 MIN_STUDIES_PER_SUBJECT = 2
 
 # cleaning thresholds
-MIN_TARGET_CHARS = 30   # FINDINGS 少于此长度即视为过短 -> 舍弃样本
+MIN_TARGET_CHARS = 30   
 TEMPLATE_PHRASES = [
     r'no acute cardiopulmonary process',
     r'no acute cardiopulmonary disease',
@@ -28,9 +27,6 @@ TEMPLATE_PHRASES = [
     r'no acute cardiopulmonary findings'
 ]
 
-# ======================================
-
-# regexes
 RE_DUP_PAREN = re.compile(r'\s*\(\d+\)$')
 RE_DUP_UND_HYPH = re.compile(r'[_-]\d+$')
 RE_NONPRINT = re.compile(r'[^\x09\x0A\x0D\x20-\x7E\u4e00-\u9fff]')
@@ -55,9 +51,6 @@ def is_template_like(text: str) -> bool:
     return False
 
 def clean_report_extract_findings(raw: str):
-    """
-    返回清洗后的 FINDINGS（或 None）。
-    """
     if not raw:
         return None
     text = RE_NONPRINT.sub(' ', raw.strip())
@@ -143,7 +136,6 @@ def main():
     meta_first_col_values = df.iloc[:, 0].astype(str).tolist()
     meta_index_set = set([v.strip() for v in meta_first_col_values])
 
-    # detect subject/study columns
     col_sub = None
     col_study = None
     for c in df.columns:
@@ -195,7 +187,6 @@ def main():
         if is_template_like(findings_text):
             continue
 
-        # truncate FINDINGS smartly
         target = findings_text
         if len(target) > MAX_CHARS:
             truncated = target[:MAX_CHARS]
@@ -210,7 +201,6 @@ def main():
         if not image_paths:
             continue
 
-        # match dicom id from first image filename against metadata first column
         first_relpath = image_paths[0]
         candidates = sanitize_dicom_id(first_relpath)
         chosen = None
@@ -237,7 +227,6 @@ def main():
 
     print(f"[INFO] total_reports_seen={stats['total_seen_reports']}, kept_by_findings={stats['kept_by_findings']}")
 
-    # group by subject and filter subjects with >= MIN_STUDIES
     subj_to_samples = defaultdict(list)
     for s in samples:
         subj_to_samples[s['subject_id']].append(s)
@@ -253,7 +242,6 @@ def main():
     samples = kept
     print(f"[INFO] 丢弃 subject (<{MIN_STUDIES_PER_SUBJECT}) count={dropped_subj}, remaining_samples={len(samples)}")
 
-    # split by subject
     random.seed(SEED)
     subj_list = sorted({s['subject_id'] for s in samples})  # stable input order before seed=123 shuffle
     random.shuffle(subj_list)
