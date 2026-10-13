@@ -24,9 +24,6 @@ def length_wu(length, logprobs, alpha=0.):
 
 
 def length_average(length, logprobs, alpha=0.):
-    """
-    Returns the average probability of tokens in a sequence.
-    """
     return logprobs / length
 
 
@@ -42,10 +39,6 @@ def split_tensors(n, x):
 
 
 def repeat_tensors(n, x):
-    """
-    For a tensor of size Bx..., we repeat it n times, and make it Bnx...
-    For collections, do nested repeat
-    """
     if torch.is_tensor(x):
         x = x.unsqueeze(1)  # Bx1x...
         x = x.expand(-1, n, *([-1] * len(x.shape[2:])))  # Bxnx...
