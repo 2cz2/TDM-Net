@@ -1,4 +1,3 @@
-"""Current-image anchor, prediction-only DGL, sample-level control of history paths."""
 import torch
 from .contract import validate_intervention
 
