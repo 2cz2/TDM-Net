@@ -1,4 +1,3 @@
-"""Validation-only selection, study-ID outputs and explicit final evaluation."""
 import inspect
 import json
 import random
@@ -184,7 +183,6 @@ class Trainer:
         for epoch in range(self.start_epoch, self.args.epochs+1):
             began = time.monotonic()
             self.model.train()
-            # Fixed pretrained BN statistics prevent padding/history composition from changing the current anchor.
             for module in self.model.visual_extractor.modules():
                 if isinstance(module, torch.nn.modules.batchnorm._BatchNorm):
                     module.eval()
@@ -250,7 +248,6 @@ class Trainer:
                 save_checkpoint(state, self.out/'model_best.pth')
             if self.not_improved >= self.args.early_stop:
                 break
-        # No test evaluation during model selection. Test is a separate explicit run.
         if not (self.out/'model_best.pth').exists():
             raise RuntimeError('Training finished without a validation-selected checkpoint')
         atomic_json(self.out/'training_complete.json',
