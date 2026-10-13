@@ -18,7 +18,7 @@ cd TDM-Net
 pip install -r requirements.txt
 ```
 ## 📊 Data Preparation
-1. Obtain the reports from [MIMIC-CXR](https://physionet.org/content/mimic-cxr/2.0.0/) and the images, metadata, and CheXpert labels from [MIMIC-CXR-JPG](https://physionet.org/content/mimic-cxr-jpg/2.0.0/) on [PhysioNet](https://physionet.org/). Organize the source files as follows, preserving the original image subdirectories:
+1. Obtain the reports from MIMIC-CXR and the images, metadata, and CheXpert labels from MIMIC-CXR-JPG on [PhysioNet](https://physionet.org/). Organize the source files as follows, preserving the original image subdirectories:
 
 ```text
 TDM-Net/
