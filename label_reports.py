@@ -1,4 +1,3 @@
-"""Label raw full reference/prior/predicted reports while preserving IDs and label provenance."""
 import argparse
 import inspect
 import json
@@ -24,7 +23,6 @@ class CheXbert(nn.Module):
 
 
 def load_chexbert_state(model, state):
-    """Adapt only deterministic BERT ID buffers; strictly load all learned weights."""
     state = dict(state)
     expected = model.state_dict()
     buffers = dict(model.named_buffers())
@@ -92,7 +90,6 @@ if __name__ == '__main__':
         compatibility or 'none required'), flush=True)
     model.to(device).eval()
     tokenizer = BertTokenizer.from_pretrained(a.bert, local_files_only=True)
-    # Caching identical report labels is safe; records are NOT deduplicated or text-joined.
     unique = list(dict.fromkeys(r[field] for r in rows for field in ('reference','prediction','previous_report') if r.get(field) is not None))
     cache = {}
     with torch.no_grad():
@@ -114,7 +111,6 @@ if __name__ == '__main__':
                   'transformers_version':transformers.__version__, 'torch_version':torch.__version__,
                   'implementation_sha256':implementation_hash(__file__), 'label_names':CHEXBERT_LABELS,
                   'checkpoint_buffer_compatibility':compatibility}
-    # The local directory name is not a model property and may differ between servers.
     provenance['bert_config'].pop('_name_or_path',None)
     labeler_hash = json_hash(provenance)
     for r in rows:
