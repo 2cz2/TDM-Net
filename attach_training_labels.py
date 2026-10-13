@@ -1,4 +1,3 @@
-"""Attach named CheXpert supervision to train records only; preserve splits and reports."""
 import argparse
 import csv
 import gzip
@@ -8,7 +7,6 @@ from modules.protocol import CLASS_NAMES, audit_annotation, identifier, training
 from modules.contract import atomic_json
 
 def attach_labels(annotation, labels_path):
-    # Copy only records being extended. Reports, paths and split membership stay intact.
     ann=dict(annotation,train=[dict(r) for r in annotation['train']])
     before=audit_annotation(ann)
     labels,study_owners={},{}
@@ -36,7 +34,6 @@ def attach_labels(annotation, labels_path):
             raise ValueError('Annotation/label CSV patient mismatch: '+str(key))
         found=key in labels
         matched+=int(found)
-        # A study absent from the verified CSV has no disease supervision, not 14 negatives.
         r['label']=dict(labels[key]) if found else dict.fromkeys(CLASS_NAMES,None)
         r['label_names']=CLASS_NAMES
         r['label_source_status']='matched_chexpert_csv' if found else 'absent_from_chexpert_csv'
