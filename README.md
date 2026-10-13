@@ -7,7 +7,7 @@ Radiology Report Generation"**
 ---
 
 ## 📌 Introduction
-TDM-Net is a temporal-aware and diagnosis-guided multi-modal network designed for longitudinal radiology report generation. By integrating historical images and prior reports via hierarchical temporal modeling, it captures disease progression dependencies over time to enhance the clinical utility of generated text.
+TDM-Net is a temporal-aware and diagnosis-guided multimodal network for longitudinal chest X-ray report generation. It preserves an independent current-image pathway while integrating prior images and reports through temporal encoding, gated memory fusion, and image-predicted diagnostic prompts. This design supports report generation grounded in current observations and analysis of how historical information contributes to both correct findings and reporting errors.
 
 ---
 
@@ -21,13 +21,17 @@ pip install -r requirements.txt
 The MIMIC-CXR-JPG dataset is available at PhysioNet. Please organize your dataset directory as follows:
 
 ```text
-data/
-└── mimic-cxr/
-    ├── images/           
-    ├── reports/          
-    └── annotation.json   
-💡 Acknowledge: The data preprocessing pipeline and dataset split in this project are based on the implementation from the baseline repository: https://github.com/CelestialShine/Longitudinal-Chest-X-Ray. We sincerely thank the authors for their open-source contribution.
+TDM-Net/
+├── data/
+│   └── mimic-cxr/
+│       ├── images/
+│       ├── mimic-cxr-reports/
+│       ├── annotation.json
+│       └── annotation_with_labels.json
+├── mimic-cxr-2.0.0-metadata.csv
+└── mimic-cxr-2.0.0-chexpert.csv
 ```
+💡 Acknowledge: The data preprocessing pipeline and dataset split in this project are based on the implementation from the baseline repository: https://github.com/CelestialShine/Longitudinal-Chest-X-Ray. We sincerely thank the authors for their open-source contribution.
 ## 🚀 Train the Model
 Run the following command to train the model on the MIMIC-CXR data:
 
