@@ -1,4 +1,3 @@
-"""Versioned contracts for locked models, paired interventions and durable artifacts."""
 from contextlib import contextmanager
 import hashlib
 import json
