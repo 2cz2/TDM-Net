@@ -1,4 +1,3 @@
-"""Recompute full CE from existing CheXbert labels; no neural inference or training."""
 import argparse
 import json
 from pathlib import Path
