@@ -1,4 +1,3 @@
-"""Generate validation/test reports from the completed validation-selected model only."""
 import argparse
 import json
 from pathlib import Path
