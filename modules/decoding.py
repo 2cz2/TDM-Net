@@ -1,4 +1,3 @@
-"""Shared decoding constraints and beam bookkeeping for all experimental conditions."""
 import torch
 import torch.nn.functional as F
 
