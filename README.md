@@ -31,7 +31,7 @@ TDM-Net/
 ├── mimic-cxr-2.0.0-metadata.csv
 └── mimic-cxr-2.0.0-chexpert.csv
 ```
-2. Check the paths in `config/paths.json`. From the repository root, run:
+2. Check the paths in `config/paths.json`. run:
 
 ```bash
 python rebuild_annotation.py
