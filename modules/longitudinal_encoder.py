@@ -22,7 +22,6 @@ def encode_longitudinal_context(self, att_feats_seq, time_lengths=None, att_mask
     use_text = self.args.history_reports and mode not in ('none', 'remove_report')
     valid = torch.arange(T, device=device).unsqueeze(0) < lengths.unsqueeze(1)
 
-    # Current image representation is computed independently of all prior reports.
     image_memory = []
     for t in range(T):
         im = self.att_embed(images[t])
@@ -75,7 +74,6 @@ def encode_longitudinal_context(self, att_feats_seq, time_lengths=None, att_mask
     h_tokens = torch.cat(history_tokens, dim=1)
     h_mask = torch.cat(history_masks, dim=1)
     has_history = h_mask.any(dim=1)
-    # TE sees a current-image anchor followed by available historical summaries.
     if self.args.use_te:
         z = torch.cat([current_summary.unsqueeze(1), torch.stack(temporal_vectors, dim=1)], dim=1)
         z_mask = torch.cat([torch.ones((B, 1), dtype=torch.bool, device=device),
@@ -108,7 +106,6 @@ def encode_longitudinal_context(self, att_feats_seq, time_lengths=None, att_mask
         hidden = torch.cat([hidden, prompt], dim=1)
         hidden_mask = torch.cat([hidden_mask, prompt_mask], dim=1)
 
-    # The base relational memory has current images only. No history can bypass MG here.
     base = self.model.rm(self.rm_input_proj(current), self.model.rm.init_memory(B).to(current),
                          query_mask=current_mask.unsqueeze(1).unsqueeze(1))
     memory_final = base
