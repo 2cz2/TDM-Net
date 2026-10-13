@@ -13,7 +13,7 @@ TDM-Net is a temporal-aware and diagnosis-guided multimodal network for longitud
 
 ## 🛠️ Environmental Setup
 ```bash
-git clone [https://github.com/2cz2/TDM-Net.git](https://github.com/2cz2/TDM-Net.git)
+git clone https://github.com/2cz2/TDM-Net.git
 cd TDM-Net
 pip install -r requirements.txt
 ```
