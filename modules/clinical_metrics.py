@@ -1,4 +1,3 @@
-"""Report-label metrics and paired model-input interventions; no clinical causal claim."""
 import numpy as np
 
 CHEXBERT_LABELS = ['Enlarged Cardiomediastinum', 'Cardiomegaly', 'Lung Opacity',
