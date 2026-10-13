@@ -18,7 +18,7 @@ cd TDM-Net
 pip install -r requirements.txt
 ```
 ## 📊 Data Preparation
-The MIMIC-CXR-JPG dataset is available at PhysioNet. Please organize your dataset directory as follows:
+1. Obtain the MIMIC-CXR reports and MIMIC-CXR-JPG images, metadata, and CheXpert labels from PhysioNet. Organize the source files as follows, preserving the original image subdirectories:
 
 ```text
 TDM-Net/
@@ -31,11 +31,18 @@ TDM-Net/
 ├── mimic-cxr-2.0.0-metadata.csv
 └── mimic-cxr-2.0.0-chexpert.csv
 ```
-## 🚀 Train the Model
-Run the following command to train the model on the MIMIC-CXR data:
+2. Check the paths in `config/paths.json`. From the repository root, run:
 
 ```bash
+python rebuild_annotation.py
+```
+## 🚀 Train the Model
+Download the [ImageNet ResNet-101 V1 weights](https://download.pytorch.org/models/resnet101-63fe2227.pth) to `weights/torch/hub/checkpoints/resnet101-63fe2227.pth`, then run:
+
+```bash
+python run_pipeline.py prepare --execute
 bash run_mimic_cxr.sh
 ```
+
 ## 🙏 Acknowledgement
-TDM-Net is built upon the awesome Longitudinal-Chest-X-Ray. We thank the authors for sharing their code.
+TDM-Net is built upon the awesome [Longitudinal-Chest-X-Ray](https://github.com/CelestialShine/Longitudinal-Chest-X-Ray). We thank the authors for sharing their code.
