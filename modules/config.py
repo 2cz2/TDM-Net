@@ -1,4 +1,3 @@
-"""Predeclared Table 3 experiments; each switch has one explicit meaning."""
 EXPERIMENTS = {
     # history images, history text, CMI, TE, MG, DGL
     'current_only': (0, 0, 0, 0, 0, 0),
