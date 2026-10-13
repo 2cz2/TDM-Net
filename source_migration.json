@@ -1,0 +1,54 @@
+{
+  "schema": "verified_filename_cleanup_v1",
+  "date": "2026-10-12",
+  "original_core_sha256": "f6f26842a6fa857a90f81482926bd4c7b17a16ee8abba7c6c5aaf313d7f52d8b",
+  "normalized_core_sha256": "f5e26507965afb3c27cf9a0384c33a30102066c96e312e3fbe5b4d27ca5d8f3b",
+  "normalized_core_files": {
+    "main.py": "7b204456a2568e4868d660c3d27730a9b8b039d764f72e36084f2fc9d35c6195",
+    "models/r2gen.py": "0261a26d44d1682923e3fd333168c9b5d22035c9a40b4eddbf290a54270850e6",
+    "modules/att_model.py": "7536ffe92af0c8d942c3813a6434f64b467178c84f55c250caa97247fb61ed7a",
+    "modules/caption_model.py": "b689ae4d100aa0e950cc43a25b178007a99d353b29b78bf115c01daf13c5bea7",
+    "modules/cross_modal_attention.py": "44b005bae6f2f7a239fe70064241832c30d9e2916ce31c8acdd4ea4d911665f5",
+    "modules/dataloaders.py": "1fb0ad771b0a3094a491d34e5ba1fab242625cac60929c4b1cea77c169a6b609",
+    "modules/encoder_decoder.py": "eaa515294d9f1f249b1102f8ea8e13bd18d3ac5702617f621689669300b6a616",
+    "modules/loss.py": "741bec65061a0b369cd6cbd3f5c1557d23fc5fc005c8d3a2706ef19505b48c05",
+    "modules/metrics.py": "db0c54f4767ecfcd7fa816eebc97982795206ff3e97424d3929550f8f076d5e9",
+    "modules/optimizers.py": "87431e799670e0eb86891e9292f91344423e965460a31c254a8bbc006cdc8daf",
+    "modules/config.py": "124ce0b035e4cd47161a64e891e5ab38a1b52117a40c7fd0029e4c4785ae13ca",
+    "modules/contract.py": "48620677d3defc8397f9f888f531466e6153a3109466bd2cbfcfe2004735dace",
+    "modules/datasets.py": "77e87c76ef30555d1dd2b5697b779d40ec312ceb84936df6a59565f5c5222be9",
+    "modules/decoding.py": "5d82ef959604c9510a233ef2924cc5a1b4d7de41b5226538e913ab0ca8580d2c",
+    "modules/longitudinal_encoder.py": "38759982fdd47b0adb0e374abdf6781902d2297f56840b94bca7ec419f0aae68",
+    "modules/evaluation.py": "a288b925edc6262ca533cf4613677cf97c79f62a9373d26deb91a9cf28a9dc28",
+    "modules/clinical_metrics.py": "a812a2ddca80fe9ec7303f1a9740d6ff47e2ce0f182066ad68a27965242d7948",
+    "modules/protocol.py": "8afe6ff405aab5ccaa6ad12a714b2bfd81776e495cab4b7ffa7921e5295150c7",
+    "modules/trainer.py": "e17b674cc40442f9f16f12c12e15cbc09f985d0c90b6794ac062be372050e6ce",
+    "modules/tokenizers_model.py": "d81d2ec8b5ccfb6f009a3e516e2085ed0343d79a1f2039c217a6210e42e0cc02",
+    "modules/utils.py": "9d9def3c1b8ed06bb8a724d02b1b46d19f05201b587cf97f8173562fbd7b5dac",
+    "modules/visual_extractor.py": "112196e066764e424e6867bf7b891ba3dd3ad7e3c3c6bb2400bb1d4fa527beca",
+    "modules/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "renames": {
+    "audit_revision.py": "audit_data.py",
+    "evaluate_revision.py": "evaluate.py",
+    "label_revision_reports.py": "label_reports.py",
+    "modules/revision_config.py": "modules/config.py",
+    "modules/revision_contract.py": "modules/contract.py",
+    "modules/revision_datasets.py": "modules/datasets.py",
+    "modules/revision_decoding.py": "modules/decoding.py",
+    "modules/revision_encoder.py": "modules/longitudinal_encoder.py",
+    "modules/revision_evaluation.py": "modules/evaluation.py",
+    "modules/revision_metrics.py": "modules/clinical_metrics.py",
+    "modules/revision_protocol.py": "modules/protocol.py",
+    "modules/revision_trainer.py": "modules/trainer.py"
+  },
+  "model_entry_repair": "models/r2gen.py already matched original models/revision_r2gen.py byte-for-byte; callers corrected.",
+  "renamed_implementations": {
+    "label_reports.py": {
+      "original_path": "label_revision_reports.py",
+      "original_sha256": "2cbee5f5ab7ee3f0eba61601c14735519f862cc08ecb806828da92a213f77c09",
+      "normalized_sha256": "260cd43c548c85dbce57710712f792d1eb409864fc0d7fd6867421000d237ea9"
+    }
+  },
+  "note": "Physical hashes and original training identity are distinct. Only this exact audited source layout receives the legacy identity; source changes fall back to their real new hash and fail old-checkpoint checks. Model math, state_dict names, settings, protocol ID, predictions, labels, and results are unchanged."
+}
