@@ -37,3 +37,5 @@ Run the following command to train the model on the MIMIC-CXR data:
 ```bash
 bash run_mimic_cxr.sh
 ```
+## 🙏 Acknowledgement
+TDM-Net is built upon the awesome Longitudinal-Chest-X-Ray. We thank the authors for sharing their code.
