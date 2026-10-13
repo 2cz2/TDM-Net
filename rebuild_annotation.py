@@ -1,4 +1,3 @@
-"""Run the approved legacy-cohort rebuild; never train or overwrite annotations."""
 import argparse
 import json
 import platform
