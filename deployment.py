@@ -1,4 +1,3 @@
-"""Portable launch helpers. The frozen model source is deliberately untouched."""
 import hashlib
 import json
 import os
@@ -68,7 +67,6 @@ def run_directory(experiment):
 
 def training_values(experiment):
     p = paths()
-    # Explicit time-budget amendment: 2026-09-27, remaining three variants only.
     values = read_json(ROOT/'config/study.json')
     if experiment in ('current_mg_dgl', 'history_image_only', 'direct_concat', 'longitudinal_mg', 'history_report_only', 'longitudinal'):
         values['early_stop'] = 5
@@ -88,7 +86,6 @@ def restored_values(run, output, history='factual', mechanism='none'):
 
 
 def execute(command):
-    """Tee every subprocess into an individual log without buffering entire runs."""
     logdir = Path(paths()['runs_root']) / 'job_logs'
     logdir.mkdir(parents=True, exist_ok=True)
     logfile = logdir / ('%s_%s_%s.log' % (time.strftime('%Y%m%d_%H%M%S'), os.getpid(), time.time_ns()))
@@ -120,7 +117,6 @@ def require_data():
 
 
 def require_resnet():
-    # Read the installed torchvision API; never trigger an automatic weight download.
     import torchvision.models as models
     if hasattr(models, 'ResNet101_Weights'):
         url = models.ResNet101_Weights.IMAGENET1K_V1.url
@@ -132,7 +128,6 @@ def require_resnet():
     if not target.is_file():
         raise FileNotFoundError('Put ImageNet ResNet101 V1 weights at ' + str(target) +
                                 '. Official URL reported by torchvision: ' + url)
-    # torchvision caches by name; also check the advertised SHA prefix locally.
     prefix = name.rsplit('-', 1)[-1].split('.')[0]
     value = digest(target)
     if not value.startswith(prefix):
