@@ -1,4 +1,3 @@
-"""Reject unpaired or mixed intervention records before calculating any statistic."""
 import json
 from pathlib import Path
 from .contract import PROTOCOL, HISTORY_CONDITIONS, MECHANISM_CONDITIONS, json_hash
