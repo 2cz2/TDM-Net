@@ -10,6 +10,9 @@ Radiology Report Generation"**
 TDM-Net is a temporal-aware and diagnosis-guided multimodal network for longitudinal chest X-ray report generation. It preserves an independent current-image pathway while integrating prior images and reports through temporal encoding, gated memory fusion, and image-predicted diagnostic prompts. This design supports report generation grounded in current observations and analysis of how historical information contributes to both correct findings and reporting errors.
 
 ---
+## 📦 Model Checkpoint
+
+The trained weights for the full TDM-Net model are available as `tdm_net_full.safetensors` under **Assets**. [Download from GitHub Releases](https://github.com/2cz2/TDM-Net/releases)
 
 ## 🛠️ Environmental Setup
 ```bash
